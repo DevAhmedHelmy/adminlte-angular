@@ -2,28 +2,21 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './components/layouts/navbar/navbar.component';
-import { SidebarComponent } from './components/layouts/sidebar/sidebar.component';
-import { FooterComponent } from './components/layouts/footer/footer.component';
-import { HomeComponent } from './components/pages/home/home.component';
-import { BreadcrumbComponent } from './components/layouts/breadcrumb/breadcrumb.component';
-import { AuthenticationModule } from './authentication/authentication.module';
 
+import { RouterModule, Routes } from '@angular/router';
+import { DashboardModule } from './dashboard/secure/dashboard/dashboard.module';
+const appRoutes: Routes = [
+  {
+    path: '',
+    loadChildren: () =>
+      import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
+  },
+  { path: '', redirectTo: '', pathMatch: 'full' },
+];
 @NgModule({
-  declarations: [
-    AppComponent,
-
-    NavbarComponent,
-    SidebarComponent,
-    FooterComponent,
-    HomeComponent,
-    BreadcrumbComponent
-  ],
-  imports: [
-    BrowserModule,
-    AuthenticationModule
-  ],
+  declarations: [AppComponent],
+  imports: [BrowserModule, RouterModule.forRoot(appRoutes)],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
