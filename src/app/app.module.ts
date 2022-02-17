@@ -11,6 +11,7 @@ const appRoutes: Routes = [
   },
   { path: '', redirectTo: '', pathMatch: 'full' },
 ];
+
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, RouterModule.forRoot(appRoutes)],
