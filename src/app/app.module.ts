@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
-
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardModule } from './dashboard/secure/dashboard/dashboard.module';
+
 const appRoutes: Routes = [
   {
     path: '',
